@@ -5,12 +5,16 @@
 }
 
 .page {
-  min-inline-size: 360px;
   margin: 0;
   color: var(--text-color);
   font-family: var(--main-font), serif;
   font-size: var(--main-text-size, 18px);
   background-color: var(--bg-color);
+  min-inline-size: 360px;
+}
+
+.content-section {
+  padding: 0 5vi;
 }
 
 p,
@@ -25,7 +29,20 @@ figure {
   margin: 0;
 }
 
+.header__title {
+  margin-block-end: 40px;
+  font-size: clamp(3.75rem, 2.5rem + 5.5556vw, 7.5rem);
+}
+
 .heading {
-  /* семейство шрифтов, интерлиньяж, вес шрифта, выравнивание текста */
+  margin-block-start: 10%;
   font-family: var(--accent-font, sans-serif);
+  font-weight: 600;
+  text-align: center;
+}
+
+.content__title {
+  margin-block-start: 7%;
+  margin-block-end: 2.5%;
+  font-size: 30px;
 }
