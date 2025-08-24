@@ -8,7 +8,6 @@
   margin: 0;
   color: var(--text-color);
   font-family: var(--main-font), serif;
-  font-size: var(--main-text-size, 18px);
   background-color: var(--bg-color);
   min-inline-size: 360px;
 }
@@ -29,6 +28,25 @@ figure {
   margin: 0;
 }
 
+a,
+button {
+  padding: 1.5px;
+  border-radius: 0;
+}
+
+a:hover,
+button:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--light-text-color);
+}
+
+a:focus-visible,
+button:focus-visible {
+  border: 1px solid currentColor;
+}
+
+/* Header */
+
 .header__title {
   margin-block-end: 40px;
   font-size: clamp(3.75rem, 2.5rem + 5.5556vw, 7.5rem);
@@ -41,8 +59,182 @@ figure {
   text-align: center;
 }
 
+.header__menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 20px;
+  border-top: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+}
+
+.header__theme-toggler {
+  display: flex;
+  gap: 15px;
+}
+
+.header__theme-button {
+  font-family: inherit;
+  color: currentColor;
+  font-size: var(--main-text-size);
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.header__theme-button:disabled {
+  pointer-events: none;
+}
+
+.header__theme-button_is-active {
+  font-weight: 800;
+  position: relative;
+  display: inline-block;
+}
+
+.header__theme-button_is-active::after {
+  content: '';
+  position: absolute;
+  inset: 0.8em 0.2em;
+  height: 0.3em;
+  width: 7ch;
+  background-color: var(--accent-color);
+  z-index: -1;
+}
+
+.theme_dark .header__theme-button_is-active::after {
+  background-image: url(../images/pattern.svg);
+}
+
+/* Content */
+
 .content__title {
-  margin-block-start: 7%;
-  margin-block-end: 2.5%;
+  margin-top: 7%;
+  margin-bottom: 2.5%;
   font-size: 30px;
+}
+
+.content__text-block {
+  font-size: var(--main-text-size, 18px);
+}
+
+.content__text-block > .content__paragraph:not(:last-of-type) {
+  margin-bottom: 1.5em;
+}
+
+.content__link {
+  color: currentColor;
+}
+
+.content__blockquote {
+  margin-bottom: 1.5em;
+  inline-size: 75%;
+}
+
+.content__list {
+  margin-left: 40px;
+  list-style: none;
+}
+
+.content__item::before {
+  content: '';
+  display: inline-block;
+  margin-inline-end: 3px;
+  background-image: url(../images/marker-light.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  inline-size: 15px;
+  block-size: 15px;
+}
+
+.theme_dark .content__item::before {
+  background-image: url(../images/marker-dark.svg);
+}
+
+.content__item:not(:last-of-type) {
+  margin-block-end: 10px;
+}
+
+.content__text-block_type_first-lettered
+  > .content__paragraph:first-child::first-letter {
+  display: inline-block;
+  background-color: var(--accent-color);
+  padding: 0 4px;
+  margin-right: 1px;
+  font-weight: 800;
+  font-size: 30px;
+}
+
+.theme_dark
+  .content__text-block_type_first-lettered
+  > .content__paragraph:first-child::first-letter {
+  background-image: url(../images/pattern.svg);
+  border: 1px solid currentColor;
+}
+
+.content__figure {
+  position: relative;
+  margin-block: 7%;
+  inline-size: calc(100% + 10vi);
+  left: -5vi;
+  top: 0;
+}
+
+.content__picture {
+  inline-size: 100%;
+}
+
+.content__picture-caption {
+  text-align: center;
+  padding-block: 20px;
+  border-bottom: 1px solid currentColor;
+}
+
+/* Card */
+
+.content__card {
+  aspect-ratio: 4/3;
+  margin-block-start: 7%;
+  border: 1px solid currentColor;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content__card-title {
+  font-size: 60px;
+}
+
+.content__card-subtitle {
+  font-size: 18px;
+  text-align: center;
+}
+
+.colored-text {
+  position: relative;
+  display: inline-block;
+}
+
+.colored-text::after {
+  content: '';
+  position: absolute;
+  inset: 0.7em -0.08em;
+  height: 0.3em;
+  width: 3.7em;
+  background-color: var(--accent-color);
+  z-index: -1;
+}
+
+.theme_dark .colored-text::after {
+  background-image: url(../images/pattern.svg);
+}
+
+/* Footer */
+
+.footer {
+  margin-top: 10%;
+  padding: 2.5%;
+  border-top: 1px solid currentColor;
+  text-align: center;
 }

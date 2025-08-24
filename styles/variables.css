@@ -1,8 +1,15 @@
 :root {
   --bg-color: #f3efec;
   --text-color: #312a4e;
+  --light-text-color: #312a4e80;
   --accent-color: #ffab6b;
   --main-font: 'Raleway';
   --accent-font: 'STIX Two Text';
   --main-text-size: 18px;
+}
+
+:root .theme_dark {
+  --bg-color: #171717;
+  --text-color: #b3b3b3;
+  --accent-color: transparent;
 }
