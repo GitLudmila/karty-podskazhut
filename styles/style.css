@@ -4,18 +4,6 @@
   box-sizing: border-box;
 }
 
-.page {
-  margin: 0;
-  color: var(--text-color);
-  font-family: var(--main-font), serif;
-  background-color: var(--bg-color);
-  min-inline-size: 360px;
-}
-
-.content-section {
-  padding: 0 5vi;
-}
-
 p,
 h1,
 h2,
@@ -40,9 +28,30 @@ button:hover {
   text-decoration-color: var(--light-text-color);
 }
 
+a:focus,
+button:focus {
+  outline: none;
+}
+
 a:focus-visible,
 button:focus-visible {
   border: 1px solid currentColor;
+}
+
+button:disabled {
+  pointer-events: none;
+}
+
+.page {
+  margin: 0;
+  color: var(--text-color);
+  font-family: var(--main-font), serif;
+  background-color: var(--bg-color);
+  min-inline-size: 360px;
+}
+
+.content-section {
+  padding: 0 5vi;
 }
 
 /* Header */
@@ -57,6 +66,7 @@ button:focus-visible {
   font-family: var(--accent-font, sans-serif);
   font-weight: 600;
   text-align: center;
+  line-height: 0.9;
 }
 
 .header__menu {
@@ -82,10 +92,6 @@ button:focus-visible {
   cursor: pointer;
 }
 
-.header__theme-button:disabled {
-  pointer-events: none;
-}
-
 .header__theme-button_is-active {
   position: relative;
   display: inline-block;
@@ -109,8 +115,7 @@ button:focus-visible {
 /* Content */
 
 .content__title {
-  margin-top: 7%;
-  margin-bottom: 2.5%;
+  margin: 7% 0 2.5%;
   font-size: 30px;
 }
 
@@ -127,8 +132,10 @@ button:focus-visible {
 }
 
 .content__blockquote {
-  margin-bottom: 1.5em;
+  margin: 0 auto 1.5em;
   inline-size: 75%;
+  font-style: italic;
+  line-height: 2;
 }
 
 .content__list {
@@ -156,7 +163,7 @@ button:focus-visible {
 }
 
 .content__text-block_type_first-lettered
-  > .content__paragraph:first-child::first-letter {
+  > .content__paragraph:first-of-type::first-letter {
   display: inline-block;
   margin-right: 1px;
   padding: 0 4px;
@@ -167,16 +174,15 @@ button:focus-visible {
 
 .theme_dark
   .content__text-block_type_first-lettered
-  > .content__paragraph:first-child::first-letter {
+  > .content__paragraph:first-of-type::first-letter {
   border: 1px solid currentColor;
   background-image: url(../images/pattern.svg);
 }
 
 .content__figure {
   position: relative;
-  top: 0;
-  left: -5vi;
-  margin-block: 7%;
+  inset-inline-end: 5vi;
+  margin: 7% auto;
   inline-size: calc(100% + 10vi);
 }
 
@@ -185,8 +191,8 @@ button:focus-visible {
 }
 
 .content__picture-caption {
-  border-bottom: 1px solid currentColor;
-  padding-block: 20px;
+  border-block-end: 1px solid currentColor;
+  padding: 20px;
   text-align: center;
 }
 
@@ -219,10 +225,11 @@ button:focus-visible {
 .colored-text::after {
   content: '';
   position: absolute;
-  inset: 0.7em -0.08em;
+  inset-block-end: 0.3ch;
+  inset-inline-start: -4px;
   z-index: -1;
-  width: 3.7em;
-  height: 0.3em;
+  inline-size: calc(100% + 8px);
+  block-size: 0.5ch;
   background-color: var(--accent-color);
 }
 
@@ -233,8 +240,8 @@ button:focus-visible {
 /* Footer */
 
 .footer {
-  margin-top: 10%;
-  border-top: 1px solid currentColor;
+  margin-block-start: 10%;
+  border-block-start: 1px solid currentColor;
   padding: 2.5%;
   text-align: center;
 }
